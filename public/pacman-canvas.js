@@ -289,7 +289,7 @@ function geronimo() {
         };
         this.gameOver = false;
         this.canvas = $("#myCanvas").get(0);
-        this.wallColor = "Blue";
+        this.wallColor = "Red";
         this.width = this.canvas.width;
         this.height = this.canvas.height;
 
@@ -579,7 +579,7 @@ function geronimo() {
 
         /* ------------ Start Pre-Build Walls  ------------ */
         this.buildWalls = function() {
-            if (this.ghostMode === 0) game.wallColor = "Blue";
+            if (this.ghostMode === 0) game.wallColor = "Red";
             else game.wallColor = "Red";
             canvas_walls = document.createElement('canvas');
             canvas_walls.width = game.canvas.width;
