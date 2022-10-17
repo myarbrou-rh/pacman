@@ -579,7 +579,7 @@ function geronimo() {
 
         /* ------------ Start Pre-Build Walls  ------------ */
         this.buildWalls = function() {
-            if (this.ghostMode === 0) game.wallColor = "Yellow";
+            if (this.ghostMode === 0) game.wallColor = "Red";
             else game.wallColor = "Green";
             canvas_walls = document.createElement('canvas');
             canvas_walls.width = game.canvas.width;
@@ -1599,8 +1599,8 @@ function checkAppCache() {
 
                 // Pac Man
                 context.beginPath();
-                context.fillStyle = "Yellow";
-                context.strokeStyle = "Yellow";
+                context.fillStyle = "Red";
+                context.strokeStyle = "Red";
                 context.arc(pacman.posX+pacman.radius,pacman.posY+pacman.radius,pacman.radius,pacman.angle1*Math.PI,pacman.angle2*Math.PI);
                 context.lineTo(pacman.posX+pacman.radius, pacman.posY+pacman.radius);
                 context.stroke();
