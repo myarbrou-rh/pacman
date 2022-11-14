@@ -23,7 +23,7 @@ starterProjects:
       remotes:
         origin: https://github.com/devfile-samples/devfile-stack-nodejs-angular.git
 components:
-  - openshift:
+  - container:
       name: mongo
       container:
       image: quay.io/rh_ee_cschmitz/mongo:v1
@@ -39,7 +39,7 @@ components:
         - name: mongo
           targetPort: 27017
           exposure: public
-  - name: mongo-test
+  - name: mongo-cmd
     container:
       image: quay.io/rh_ee_cschmitz/mongo:v1
       memoryLimit: 512Mi
@@ -51,7 +51,7 @@ components:
         - name: postgres_db
           value: database
       endpoints:
-        - name: mongo-test
+        - name: mongo-cmd
           targetPort: 4201
           exposure: none
   - container:
@@ -65,13 +65,13 @@ components:
 commands:
   - exec:
       commandLine: /opt/bitnami/scripts/mongodb/run.sh
-      component: mongo
+      component: mongo-cmd
       group:
         isDefault: true
         kind: run
       hotReloadCapable: true
       workingDir: ${PROJECT_SOURCE}
-    id: mongo
+    id: mongo-cmd
   - exec:
       commandLine: npm install
       component: runtime
