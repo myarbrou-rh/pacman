@@ -31,21 +31,6 @@ components:
         - name: mongo
           targetPort: 27017
           exposure: public
-  - name: mongo-cmd
-    container:
-      image: quay.io/rh_ee_cschmitz/mongo:v1
-      memoryLimit: 512Mi
-      env:
-        - name: postgres_user
-          value: user
-        - name: postgres_password
-          value: password
-        - name: postgres_db
-          value: database
-      endpoints:
-        - name: mongo-cmd
-          targetPort: 4201
-          exposure: none
   - container:
       endpoints:
         - name: http-angular
@@ -55,15 +40,6 @@ components:
       memoryLimit: 1024Mi
     name: runtime
 commands:
-  - exec:
-      commandLine: /opt/bitnami/scripts/mongodb/run.sh
-      component: mongo-cmd
-      group:
-        isDefault: true
-        kind: run
-      hotReloadCapable: true
-      workingDir: ${PROJECT_SOURCE}
-    id: mongo-cmd
   - exec:
       commandLine: npm install
       component: runtime
