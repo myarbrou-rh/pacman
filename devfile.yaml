@@ -47,7 +47,7 @@ commands:
         isDefault: true
         kind: build
       workingDir: ${PROJECT_SOURCE}
-    id: install
+    id: install-pacman
   - exec:
       commandLine: npm run start
       component: runtime
@@ -56,4 +56,4 @@ commands:
         kind: run
       hotReloadCapable: true
       workingDir: ${PROJECT_SOURCE}
-    id: run
+    id: run-pacman
