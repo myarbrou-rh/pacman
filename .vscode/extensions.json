@@ -1,0 +1,10 @@
+schemaVersion: 2.2.0
+metadata:
+  name: my-example
+attributes:
+  .vscode/extensions.json: |
+    {
+      "recommendations": [
+        "dbaeumer.vscode-eslint"
+      ]
+    }
