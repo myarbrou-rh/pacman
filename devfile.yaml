@@ -24,8 +24,6 @@ starterProjects:
         origin: https://github.com/devfile-samples/devfile-stack-nodejs-angular.git
 components:
   - container:
-      name: mongo
-      container:
       image: quay.io/rh_ee_cschmitz/mongo:v1
       memoryLimit: 512Mi
       env:
