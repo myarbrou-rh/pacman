@@ -27,7 +27,7 @@ components:
     container:
       image: quay.io/rh_ee_cschmitz/mongo:v1
       memoryLimit: 512Mi
-      dedicatedPod: true
+      dedicatedPod: false
       endpoints:
         - name: mongo
           targetPort: 27017
