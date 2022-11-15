@@ -31,7 +31,7 @@ components:
       endpoints:
         - name: mongo
           targetPort: 27017
-          exposure: public
+          exposure: none
   - container:
       endpoints:
         - name: http-angular
