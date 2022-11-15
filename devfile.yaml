@@ -25,7 +25,7 @@ starterProjects:
 components:
   - name: mongo
     container:
-      image: quay.io/rh_ee_cschmitz/mongo:v2
+      image: registry.redhat.io/rhscl/mongodb-34-rhel7
       memoryLimit: 512Mi
       dedicatedPod: false
       endpoints:
