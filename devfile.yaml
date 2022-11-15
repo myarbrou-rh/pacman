@@ -1,13 +1,13 @@
-schemaVersion: 2.2.0
+schemaVersion: 2.1.0
 metadata:
   description:
     "Angular is a development platform, built on TypeScript. As a platform, Angular includes:
     A component-based framework for building scalable web applications
     A collection of well-integrated libraries that cover a wide variety of features, including routing, forms management, client-server communication, and more
     A suite of developer tools to help you develop, build, test, and update your code"
-  displayName: Pacman
+  displayName: Angular
   icon: https://raw.githubusercontent.com/devfile-samples/devfile-stack-icons/main/angular.svg
-  name: pacman
+  name: nodejs-angular
   projectType: Angular
   provider: Red Hat
   language: TypeScript
@@ -23,14 +23,36 @@ starterProjects:
       remotes:
         origin: https://github.com/devfile-samples/devfile-stack-nodejs-angular.git
 components:
-  - name: mongo
-    container:
-      image: quay.io/rh_ee_cschmitz/mongo:v2
+  - container:
+      name: mongo
+      container:
+      image: quay.io/rh_ee_cschmitz/mongo:v1
       memoryLimit: 512Mi
-      dedicatedPod: false
+      env:
+        - name: postgres_user
+          value: user
+        - name: postgres_password
+          value: password
+        - name: postgres_db
+          value: database
       endpoints:
         - name: mongo
           targetPort: 27017
+          exposure: public
+  - name: mongo-cmd
+    container:
+      image: quay.io/rh_ee_cschmitz/mongo:v1
+      memoryLimit: 512Mi
+      env:
+        - name: postgres_user
+          value: user
+        - name: postgres_password
+          value: password
+        - name: postgres_db
+          value: database
+      endpoints:
+        - name: mongo-cmd
+          targetPort: 4201
           exposure: none
   - container:
       endpoints:
@@ -41,6 +63,15 @@ components:
       memoryLimit: 1024Mi
     name: runtime
 commands:
+  - exec:
+      commandLine: /opt/bitnami/scripts/mongodb/run.sh
+      component: mongo-cmd
+      group:
+        isDefault: true
+        kind: run
+      hotReloadCapable: true
+      workingDir: ${PROJECT_SOURCE}
+    id: mongo-cmd
   - exec:
       commandLine: npm install
       component: runtime
