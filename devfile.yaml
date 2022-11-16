@@ -70,7 +70,7 @@ commands:
       component: runtime
       group:
         isDefault: true
-        kind: run-pacman
+        kind: run
       hotReloadCapable: true
       workingDir: ${PROJECT_SOURCE}
     id: run-pacman
