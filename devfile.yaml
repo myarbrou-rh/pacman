@@ -73,5 +73,5 @@ commands:
         kind: run-pacman
       hotReloadCapable: true
       workingDir: ${PROJECT_SOURCE}
-    id: run
+    id: run-pacman
    
